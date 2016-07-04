@@ -32,7 +32,7 @@ agent.addBridge(bridge);
 
 inject(window.__REACT_DEVTOOLS_GLOBAL_HOOK__, agent);
 
-setupHighlighter(agent);
+setupHighlighter(agent, true);
 setupRelay(bridge, agent, window.__REACT_DEVTOOLS_GLOBAL_HOOK__);
 
 BananaSlugBackendManager.init(agent);

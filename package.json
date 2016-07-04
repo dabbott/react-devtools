@@ -1,4 +1,5 @@
 {
+  "name": "react-devtools",
   "dependencies": {
     "babel-core": "6.3.21",
     "babel-eslint": "6.0.4",

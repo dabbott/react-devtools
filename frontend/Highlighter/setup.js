@@ -14,10 +14,13 @@ var Highlighter = require('./Highlighter');
 
 import type Agent from '../../agent/Agent';
 
-module.exports = function setup(agent: Agent) {
+module.exports = function setup(agent: Agent, createMagnifier: boolean) {
   var hl = new Highlighter(window, node => {
     agent.selectFromDOMNode(node);
   });
+  if (createMagnifier) {
+    hl.injectButton();
+  }
   agent.on('highlight', data => hl.highlight(data.node, data.name));
   agent.on('highlightMany', nodes => hl.highlightMany(nodes));
   agent.on('hideHighlight', () => hl.hideHighlight());

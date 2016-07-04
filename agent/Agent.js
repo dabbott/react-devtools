@@ -269,6 +269,11 @@ class Agent extends EventEmitter {
         component = this.reactInternals[renderer].getReactElementFromNative(node);
       } catch (e) {}
       if (component) {
+        // Since React Native Web creates a Composite Element > DOM Element,
+        // unwrap so that we select the Composite.
+        if (component.getPublicInstance() instanceof Element) {
+          component = component._currentElement._owner;
+        }
         return this.getId(component);
       }
     }
